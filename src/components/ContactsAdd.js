@@ -1,7 +1,9 @@
 import { useState } from "react"
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 function ContactsAdd(props) {
+
+  const navigate = useNavigate()
 
   // setContacts and contacts must be passed as props
   // to this component so new contacts can be added to the
@@ -11,8 +13,33 @@ function ContactsAdd(props) {
   //TODO: Implement controlled form
   //send POST to json server on form submit
 
+  function handleSubmit (event){
+    event.preventDefault()
+    const opts = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        firstName: event.target[0].value,
+        lastName: event.target[1].value,
+        street: event.target[2].value,
+        city: event.target[3].value
+      })
+    }
+    fetch(`http://localhost:4000/contacts`, opts)
+      .then(res => res.json())
+      .then(data => {
+        contacts.push(data)
+      })
+      setContacts(contacts)
+
+      event.target[0].value = ""
+      event.target[1].value = ""
+      event.target[2].value = ""
+      event.target[3].value = ""
+  }
+
   return (
-    <form className="form-stack contact-form">
+    <form className="form-stack contact-form" onSubmit={handleSubmit}>
       <h2>Create Contact</h2>
 
       <label htmlFor="firstName">First Name</label>
