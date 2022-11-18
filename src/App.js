@@ -4,6 +4,7 @@ import ContactsList from "./components/ContactsList"
 import ContactsAdd from "./components/ContactsAdd"
 import ContactsView from "./components/ContactsView"
 import "./styles/styles.css"
+import ContactsEdit from "./components/ContactsEdit"
 
 export default function App() {
   const [contacts, setContacts] = useState([])
@@ -13,7 +14,7 @@ export default function App() {
     fetch('http://localhost:4000/contacts')
     .then((res)=> res.json())
     .then((contactList)=> setContacts(contactList))
-  },[])
+  },[contacts])
 
   return (
     <>
@@ -29,9 +30,10 @@ export default function App() {
       <main>
       {/* <ContactsList contacts={contacts} /> */}
         <Routes>
-          <Route path="/" element={<ContactsList contacts={contacts}/>} />
+          <Route path="/" element={<ContactsList contacts={contacts} setContacts={setContacts}/>} />
           <Route path="/add-new-contact" element={<ContactsAdd contacts={contacts} setContacts={setContacts}/>} />
           <Route path="/view-contact/:id" element={<ContactsView contacts={contacts}/>} />
+          <Route path="/edit-contact/:id" element={<ContactsEdit contacts={contacts} setContacts={setContacts}/>} />
         </Routes>
       </main>
     </>

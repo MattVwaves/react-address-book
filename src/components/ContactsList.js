@@ -1,10 +1,31 @@
 import { useState } from "react"
 import { Link, useSearchParams } from "react-router-dom"
+import { Navigate, useNavigate } from "react-router-dom";
 
-function ContactsList({contacts}) {
+
+
+function ContactsList({contacts, setContacts}) {
+
+  const navigate = useNavigate()
+
+  const [contactToDelete, setContactToDelete] = useState(null)
+
+  function handleClick  (contact){
+
+    const opts = {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+      })
+  }
+  console.log(contactToDelete)
+  fetch(`http://localhost:4000/contacts/${contact.id}`, opts)
+      .then((res)=> res.json())
+      .then((contactId)=> setContactToDelete(contactId))
+      setContacts(contacts.filter((storedContact)=> storedContact !== contactToDelete))
+      navigate("/")
+}
   
-  //"contacts" must be passed as prop to this component
-
   return (
     <>
       <header>
@@ -23,6 +44,18 @@ function ContactsList({contacts}) {
                 View
                 </Link>
               </p>
+              <p></p>
+              <p>
+                <Link to={`/edit-contact/${contact.id}`} >
+                Edit
+                </Link>
+              </p>
+              <p></p>
+              <p>
+               <button onClick={()=> handleClick(contact)}>Delete</button>
+              </p>
+              
+              
             </li>
           )
         })}
