@@ -1,14 +1,40 @@
 {
   "contacts": [
     {
-      "firstName": "James",
-      "lastName": "Doom",
-      "street": "12 rothchild St",
-      "city": "Vienna",
-      "email": "James@doom.co.uk",
-      "linkdin": "d",
-      "twitter": "twitter/doom",
+      "firstName": "Mr",
+      "lastName": "One",
+      "street": "33 first street",
+      "city": "city of thisone",
+      "email": "thisone@one.com",
+      "linkdin": "oneLink",
+      "twitter": "oneTwit",
       "id": 1
+    },
+    {
+      "firstName": "Jim",
+      "lastName": "Jones",
+      "street": "23 Kool Aid Rise",
+      "city": "New York",
+      "email": "Jim@takemydrink.com",
+      "linkdin": "linkdin/jj",
+      "twitter": "twitter/jj",
+      "id": 2
+    }
+  ],
+  "meetings": [
+    {
+      "date": "303030",
+      "time": "2.30 pm",
+      "location": "12 first street",
+      "contactId": "1",
+      "id": 1
+    },
+    {
+      "date": "120343",
+      "time": "some time",
+      "location": "who knows",
+      "contactId": "2",
+      "id": 2
     }
   ]
 }
