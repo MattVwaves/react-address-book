@@ -65,8 +65,8 @@ let updatedContacts = []
       .then(res => res.json())
       .then(editedContact => {
         updatedContacts = contacts.map((storedContact)=>{
-            if (storedContact === contactToEdit){
-                [...updatedContacts, editedContact]
+            if (storedContact.id === contactToEdit.id){
+                return editedContact
             } else {
                 return storedContact
             }

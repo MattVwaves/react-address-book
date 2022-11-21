@@ -1,3 +1,14 @@
 {
-  "contacts": []
+  "contacts": [
+    {
+      "firstName": "James",
+      "lastName": "Doom",
+      "street": "12 rothchild St",
+      "city": "Vienna",
+      "email": "James@doom.co.uk",
+      "linkdin": "d",
+      "twitter": "twitter/doom",
+      "id": 1
+    }
+  ]
 }

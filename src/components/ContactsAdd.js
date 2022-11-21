@@ -5,13 +5,7 @@ function ContactsAdd(props) {
 
   const navigate = useNavigate()
 
-  // setContacts and contacts must be passed as props
-  // to this component so new contacts can be added to the
-  // state
   const { setContacts, contacts } = props
-
-  //TODO: Implement controlled form
-  //send POST to json server on form submit
 
   function handleSubmit (event){
     event.preventDefault()
@@ -69,7 +63,6 @@ function ContactsAdd(props) {
 
       <label htmlFor="twitter">Twitter:</label>
       <input id="twitter" name="twitter" type="link" required/>
-
 
       <div className="actions-section">
         <button className="button blue" type="submit">
