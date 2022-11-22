@@ -10,6 +10,8 @@ function ContactsEdit(props) {
 
   const {id} = useParams()
 
+  const [contactType, setContactType] = useState(null)
+
   useEffect(()=>{
     fetch(`http://localhost:4000/contacts/${id}`)
     .then((res)=> res.json())
@@ -21,6 +23,9 @@ console.log(contactToEdit)
 let editedContact = {}
 let updatedContacts = []
 
+  function handleChange (event){
+  setContactType(event.target.value)
+}
   function handleSubmit (event){
     event.preventDefault()
 
@@ -58,7 +63,8 @@ let updatedContacts = []
         city: editedContact.city,
         email: editedContact.email,
         linkdin: editedContact.linkdInd,
-        twitter: editedContact.twitter
+        twitter: editedContact.twitter,
+        contactType: contactType
       })
     }
     fetch(`http://localhost:4000/contacts/${id}`, opts)
@@ -110,6 +116,13 @@ let updatedContacts = []
       <label htmlFor="twitter">Twitter:</label>
       <input id="twitter" name="twitter" type="link" placeholder={contactToEdit.twitter} />
 
+      <h2>Contact Type</h2>
+
+      <label htmlFor="contact-type">Work:</label>
+      <input id="work" type="radio" name="contact-type" value="work" onChange={handleChange}/>
+
+      <label htmlFor="contact-type">Personal:</label>
+      <input id="personal" type="radio" name="contact-type" value="personal" onChange={handleChange}/>
 
       <div className="actions-section">
         <button className="button blue" type="submit">

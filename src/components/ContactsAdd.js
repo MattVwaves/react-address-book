@@ -1,11 +1,22 @@
 import { useEffect, useState } from "react"
 import { Navigate, useNavigate } from "react-router-dom";
 
+
 function ContactsAdd(props) {
 
   const navigate = useNavigate()
 
   const { setContacts, contacts } = props
+
+  const [contactType, setContactType] = useState(null)
+
+  function handleChange (event){
+    setContactType(event.target.value)
+  }
+
+  useEffect (()=>{
+    console.log(contactType)
+  })
 
   function handleSubmit (event){
     event.preventDefault()
@@ -19,7 +30,8 @@ function ContactsAdd(props) {
         city: event.target[3].value,
         email: event.target[4].value,
         linkdin: event.target[5].value,
-        twitter: event.target[6].value
+        twitter: event.target[6].value,
+        contactType: contactType
       })
     }
     fetch(`http://localhost:4000/contacts`, opts)
@@ -63,6 +75,14 @@ function ContactsAdd(props) {
 
       <label htmlFor="twitter">Twitter:</label>
       <input id="twitter" name="twitter" type="link" required/>
+
+      <h2>Contact Type</h2>
+
+      <label htmlFor="contact-type">Work:</label>
+      <input id="work" type="radio" name="contact-type" value="work" onChange={handleChange}/>
+
+      <label htmlFor="contact-type">Personal:</label>
+      <input id="personal" type="radio" name="contact-type" value="personal" onChange={handleChange}/>
 
       <div className="actions-section">
         <button className="button blue" type="submit">

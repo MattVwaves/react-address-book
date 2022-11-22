@@ -8,7 +8,8 @@
       "email": "thisone@one.com",
       "linkdin": "oneLink",
       "twitter": "oneTwit",
-      "id": 1
+      "id": 1,
+      "contactType": "personal"
     },
     {
       "firstName": "Jim",
@@ -18,7 +19,19 @@
       "email": "Jim@takemydrink.com",
       "linkdin": "linkdin/jj",
       "twitter": "twitter/jj",
-      "id": 2
+      "id": 2,
+      "contactType": "personal"
+    },
+    {
+      "firstName": "Matt",
+      "lastName": "Holt",
+      "street": "32 meStreet",
+      "city": "meTown",
+      "email": "me@me.co.uk",
+      "linkdin": "linkdin/me",
+      "twitter": "twitter/me",
+      "contactType": "work",
+      "id": 3
     }
   ],
   "meetings": [
@@ -35,6 +48,13 @@
       "location": "who knows",
       "contactId": "2",
       "id": 2
+    },
+    {
+      "date": "232323",
+      "time": "23.23",
+      "location": "117 23rd street",
+      "contactId": "3",
+      "id": 3
     }
   ]
 }
